@@ -4,16 +4,10 @@ require('dotenv').config();
 module.exports = (req, res, next) => {
     // Haetaan token pyynnön otsikkotiedoista (Header)
     const authHeader = req.headers['authorization'];
-<<<<<<< HEAD
-=======
-    
-    // Yleinen standardi on lähettää token muodossa: "Bearer <token>"
->>>>>>> 69fc3102ea0b1a63446f3b1a5281b2b30549d8f6
     const token = authHeader && authHeader.split(' ')[1];
 
     // Jos tokenia ei ole ollenkaan mukana pyynnössä
     if (!token) {
-<<<<<<< HEAD
         return res.status(401).json({error:"Pääsy evätty. Token puuttuu."});
     }
 
@@ -24,17 +18,5 @@ module.exports = (req, res, next) => {
         next();
     } catch (error) {
         res.status(403).json({error:"Virheellinen tai vanhentunut token."});
-=======
-        return res.status(401).json({ error: "Pääsy evätty. Token puuttuu." });
-    }
-
-    try {
-        // Varmistetaan tokenin oikeellisuus .env-tiedoston salaisella avaimella
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified; // Tallennetaan käyttäjän tiedot pyyntöön (hyödyllistä jatkossa)
-        next(); // Kaikki kunnossa, siirrytään eteenpäin itse reitille!
-    } catch (error) {
-        res.status(403).json({ error: "Virheellinen tai vanhentunut token." });
->>>>>>> 69fc3102ea0b1a63446f3b1a5281b2b30549d8f6
     }
 };

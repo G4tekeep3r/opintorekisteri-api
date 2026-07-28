@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
+const auth = require('../middleware/authMiddleware');
+
+router.use(auth);
 
 // CREATE - Lisää uusi opintojakso
 router.post('/', async (req, res) => {

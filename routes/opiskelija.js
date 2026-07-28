@@ -1,18 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
+const auth = require('../middleware/authMiddleware');
+
+router.use(auth);
 
 // CREATE (Lisää uusi opiskelija)
 router.post('/', async (req, res) => {
-  const { Etunimi, Sukunimi, Osoite, Luokatunnus } = req.body;
+  const { Etunimi, Sukunimi, Osoite, Luokkatunnus } = req.body;
   
-  if (!Etunimi || !Sukunimi || !Osoite || !Luokatunnus) {
+  if (!Etunimi || !Sukunimi || !Osoite || !Luokkatunnus) {
     return res.status(400).json({error:'Kaikki kentät ovat pakollisia'});
   }
 
   try {
-    const query = 'INSERT INTO opiskelija (Etunimi, Sukunimi, Osoite, Luokatunnus) VALUES (?, ?, ?, ?)';
-    const [result] = await db.query(query, [Etunimi, Sukunimi, Osoite, Luokatunnus]);
+    const query = 'INSERT INTO opiskelija (Etunimi, Sukunimi, Osoite, Luokkatunnus) VALUES (?, ?, ?, ?)';
+    const [result] = await db.query(query, [Etunimi, Sukunimi, Osoite, Luokkatunnus]);
     
     res.status(201).json({ 
       message: 'Opiskelija lisätty onnistuneesti', 
@@ -36,11 +39,11 @@ router.get('/', async (req, res) => {
 // UPDATE (Päivitä opiskelijan tiedot)
 router.put('/:id', async (req, res) => {
   const {id} = req.params;
-  const {Etunimi, Sukunimi, Osoite, Luokatunnus} = req.body;
+  const {Etunimi, Sukunimi, Osoite, Luokkatunnus} = req.body;
 
   try {
-    const query = 'UPDATE opiskelija SET Etunimi = ?, Sukunimi = ?, Osoite = ?, Luokatunnus = ? WHERE id_opiskelija = ?';
-    const [result] = await db.query(query, [Etunimi, Sukunimi, Osoite, Luokatunnus, id]);
+    const query = 'UPDATE opiskelija SET Etunimi = ?, Sukunimi = ?, Osoite = ?, Luokkatunnus = ? WHERE id_opiskelija = ?';
+    const [result] = await db.query(query, [Etunimi, Sukunimi, Osoite, Luokkatunnus, id]);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({error:'Opiskelijaa ei löytynyt'});

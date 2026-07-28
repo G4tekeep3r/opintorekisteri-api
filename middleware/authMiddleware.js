@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = (req, res, next) => {
-    // Haetaan token pyynnön otsikkotiedoista (Header)
+    // Haetaan token pyynnön otsikkotiedoista
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 

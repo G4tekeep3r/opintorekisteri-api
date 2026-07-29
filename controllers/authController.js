@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
 
         res.status(201).json({message:"Käyttäjätunnus luotu!"});
     } catch (error) {
-        // Jos käyttäjätunnus on jo olemassa (tietokannassa UNIQUE-rajoite)
+        // Jos käyttäjätunnus on jo olemassa
         if (error.code === 'ER_DUP_ENTRY') {
             return res.status(400).json({error:"Käyttäjätunnus on jo varattu."});
         }

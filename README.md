@@ -1,4 +1,6 @@
-**Esittelyvideo** (LITA_TÄHÄN_LIIKKI_VIDEOOSI)
+**Esittelyvideo**
+
+https://youtu.be/1X1is6jJFNI?si=FThSC35Qkz9lE5F4
 
 
 **Kuvaus ja toiminta**

@@ -1,9 +1,9 @@
-**Esittelyvideo**
+**ESITTELYVIDEO:**
 
 https://youtu.be/1X1is6jJFNI?si=FThSC35Qkz9lE5F4
 
 
-**Kuvaus ja toiminta**
+**KUVAUS JA TOIMINTA**
 
 
 REST API -rajapinta opintorekisteritietojen hallintaan. Sovelluksella voidaan suorittaa CRUD-toimintoja (Create, Read, Update, Delete) opiskelijoille, opintojaksoille ja arvioinneille. 
